@@ -17,10 +17,12 @@ const product = [
 
 localStorage.setItem("product", JSON.stringify(product))
 
+const products = localStorage.getItem("product");
+console.log(JSON.parse(products));
+
 search.addEventListener("input", () => {
 	console.log(search.value)
 	});
-
 
 product.forEach((item) => {
     let div = document.createElement("div");
