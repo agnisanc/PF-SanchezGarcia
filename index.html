@@ -12,19 +12,19 @@
 <body>
     <div>
     <h2>Busqueda</h2>
-    <input type="text" id="search">
-    <button id="searchbutton">Buscar</button>
-    </div>
-    <div>
-    <div class="cards" id="container"></div>
     </div>
 
+    <input type="text" id="searchName" placeholder="Busque aqui">
+    <button onclick="filterProducts()">Buscar</button>
+    
+    <div class="cards" id="container"></div>
 
 <h3>Formulario de compra</h3>
 
-<form id="feesForm">
-    <label for="productCode">Código del Producto:</label>
-    <input type="text" id="productCode" required>
+<ul id="productList"></ul>
+<p>Total: $<span id="totalAmount">0</span></p>
+
+
 
     <label for="numberOfFees">Número de Cuotas:</label>
     <select id="numberOfFees" required>
@@ -34,11 +34,10 @@
         <option value="9">9</option>
         <option value="12">12</option>
     </select>
-
     <button type="button" onclick="feesCalc()">Calcular</button>
-</form>
 
-<div id="resultado"></div>
+
+<div id="result"></div>
 
     <script src="./main.js"></script>
 
