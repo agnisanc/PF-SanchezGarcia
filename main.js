@@ -54,17 +54,17 @@ searchName.addEventListener("input", () => {
     searchProducts(product);
 
 //Esta seccion da funcionalidad al boton "Agregar", al precionarlo se crea una lista con los elementos seleccionados y se brinda el valor momentario de la compra realizada.
-const totalAmountElement = document.getElementById("totalAmount");
+const totalAmountSection = document.getElementById("totalAmount");
 
 function addProduct(productName, productPrice) {
-    const listItem = document.createElement("li");
-    listItem.textContent = productName;
-    productList.appendChild(listItem);
+    const itemListing = document.createElement("li");
+    itemListing.textContent = productName;
+    productList.appendChild(itemListing);
 
-    let totalAmount = parseFloat(totalAmountElement.textContent);
+    let totalAmount = parseFloat(totalAmountSection.textContent);
     totalAmount += productPrice;
 
-    totalAmountElement.textContent = totalAmount;
+    totalAmountSection.textContent = totalAmount;
     localStorage.setItem("totalAmount", totalAmount);
 }
 
@@ -77,14 +77,19 @@ function feesCalc() {
     const totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
     const priceByFee = totalAmount / numberOfFees;
     const finalAmount = priceByFee * numberOfFees;
+    const dateOfPurchase = new Date()
+    const fixedDate = dateOfPurchase.toLocaleString()
 
     document.getElementById('result').innerText = `El precio total de su compra es de: $${finalAmount}.
-    El precio por cuota es de: $${priceByFee.toFixed(1)}.`;
+    El precio por cuota es de: $${priceByFee.toFixed(1)}.
+    Fecha de compra: ${fixedDate}.
+    Muchas gracias por su compra!`;
 
     localStorage.setItem('result', JSON.stringify({
         finalAmount: finalAmount,
         numberOfFees: numberOfFees,
         priceByFee: priceByFee,
+        fixedDate: fixedDate,
     }));
 }
 
