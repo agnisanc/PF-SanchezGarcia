@@ -1,0 +1,115 @@
+* {
+    margin: 4;
+    padding: 4;
+    box-sizing: border-box;
+}
+
+.input{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1 rem;
+}
+
+.materialType > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.cards {
+    margin-bottom: 5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem; 
+}
+
+.gold,
+.silver {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gold,
+.silver {
+    justify-content: center;
+}
+
+.searchsection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchsection h2 {
+    margin-bottom: 1rem; 
+}
+
+.searchsection input[type="text"],
+.searchsection button {
+    margin-bottom: 1rem; 
+}
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+}
+
+.searchtitle, .materialtitle{
+font-family: 'Playfair Display', serif;
+}
+
+.img {
+    margin-top: 1.5rem;
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.jewelname{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+}
+
+.cardtext{
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.formtotalamount,.productsSelected, .listing, .total{
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    list-style-type: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.titleItems{
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.derivation{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.formInfo, .sendData {
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content:  center;
+}
+
+.submitButton{
+    align-items: center;
+}
