@@ -73,7 +73,7 @@ font-family: 'Playfair Display', serif;
 .jewelname{
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
-}
+}centetitleItems
 
 .cardtext{
     font-family: 'Cormorant Garamond', serif;
@@ -83,13 +83,14 @@ font-family: 'Playfair Display', serif;
     font-family: 'Cormorant Garamond', serif;
     text-align: center;
     list-style-type: none;
+    margin-bottom: 1.5rem;
 }
 
 li {
     list-style-type: none;
 }
 
-.titleItems{
+.titleheader{
     font-family: 'Cormorant Garamond', serif;
     text-align: center;
     font-size: 1.5rem;
@@ -101,15 +102,30 @@ li {
     margin-bottom: 3rem;
 }
 
-.formInfo, .sendData {
+.formInfo{
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    font-size: 1.5rem;
+    display: flex;
+justify-content: center;
+}
+
+.senddata {
     font-family: 'Cormorant Garamond', serif;
     text-align: center;
     font-size: 1rem;
-    margin-bottom: 5rem;
-    display: flex;
+    margin-bottom: 3rem;
     justify-content:  center;
 }
 
-.submitButton{
-    align-items: center;
+.endbuybutton{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.finalinfo{
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    font-size: 1.5rem;
 }

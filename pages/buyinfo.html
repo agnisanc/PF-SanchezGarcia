@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Lexend+Deca:wght@500&family=Lora&family=Noto+Sans+Display:wght@400;700&family=Playfair+Display&family=Spline+Sans+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Informacion de tu compra</title>
 </head>
 <body>
@@ -10,8 +15,15 @@
         <nav class="navbar" id="navbar"></nav>
     </header>
     <main>
-        <div id="finalInfo"></div>
+        <div class="titleheader" id="finalInfoTitle"></div>
+        <div class="finalinfo" id="finalInfo"></div>
+        <div class="finalinfo" id="finalMessage"></div>
+        <div class="endbuybutton">
+            <button id="return">Volver al inicio</button>
+        </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
+    <script src="../js/buyinfo.js"></script>
     <script src="../js/navbar.js"></script>
     <script type="module" src="../js/form.js"></script>
     <script type="module" src="../js/main.js"></script>

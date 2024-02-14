@@ -1,23 +1,4 @@
 
-const productSilver = [
-    {id: 1 , name: "Collar de plata Jericó", material: "Plata", tipo: "Pura", price: 75000, image: "../images/jerico.jpg"},
-    {id: 2 , name: "Collar de plata Lisboa", material: "Plata", tipo: "925", price: 45000, image: "../images/lisboa.jpg"},
-    {id: 3 , name: "Collar de plata Luxor", material: "Plata", tipo: "950" , price: 55000, image: "../images/luxor.jpg"},
-    {id: 4 , name: "Anillo de plata Zanzíbar" , material: "Plata", tipo: "Pura", price: 40000, image: "../images/zanzibar.jpg"},
-    {id: 5 , name: "Anillo de plata Praga" ,  material: "Plata", tipo: "950" , price: 35000, image: "../images/praga.jpg"},
-];
-
-const productGold = [
-    {id: 1 , name: "Collar de oro Atenas" , material: "Oro", tipo: "24K", price: 90000, image: "../images/atenas.jpg"},
-    {id: 2 , name: "Collar de oro Cartago" , material: "Oro", tipo: "18K", price: 80000, image: "../images/cartago.jpg"},
-    {id: 3 , name: "Collar de oro Tánger" , material: "Oro", tipo: "14K", price: 70000, image: "../images/tanger.jpg"},
-    {id: 4 , name: "Anillo de oro Tenochtitlan" , material: "Oro", tipo: "24K", price: 60000, image: "../images/tenochtitlan.jpg"},
-    {id: 5 , name: "Anillo de oro Tebas" , material: "Oro", tipo: "18K", price: 50000, image: "../images/tebas.jpg"},
-];
-
-let productsGold = JSON.parse(localStorage.getItem("productGold"))
-let productsSilver = JSON.parse(localStorage.getItem("productSilver"))
-
 const materialType = document.getElementById("materialType");
 materialType.innerHTML = "";
 let div = document.createElement("div")
@@ -53,7 +34,23 @@ clearSession.addEventListener("click", function() {
 });
 emptyCart.appendChild(clearSession);
 
-//Las busquedas realizadas en el input son guardadas en el localStorage.
+//Se llama a traves de fetch los datos contenidos en los .json locales (productsGold.json y productsSilver.json).
+
+fetch('./db/productsSilver.json')
+.then(response => response.json())
+.then(data => {
+    productSilver = data;
+    filterProducts();
+});
+
+fetch('./db/productsGold.json')
+.then(response => response.json())
+.then(data => {
+    productGold = data;
+    filterProducts(); 
+});
+
+//Se genera la funcion de filtrado de productos y de creacion de tarjetas a traves de DOM.
 
 searchName.addEventListener("input", () => {
 	const inputValue = searchName.value;
@@ -92,7 +89,8 @@ searchName.addEventListener("input", () => {
     
     filterProducts();
 
-    const totalAmountSection = document.getElementById("totalAmount");
+    //Esta funcion esta destinada a mostrar los productos seleccionados con el boton "Agregar".
+    //Se presente ademas el monto total de los productos seleccionados.
 
     function addProduct(productName, productPrice) {
         const itemListing = document.createElement("li");
@@ -103,6 +101,7 @@ searchName.addEventListener("input", () => {
         savedProducts.push({ name: productName, price: productPrice });
         sessionStorage.setItem("savedProducts", JSON.stringify(savedProducts));
 
+        const totalAmountSection = document.getElementById("totalAmount");
         let totalAmount = parseFloat(totalAmountSection.textContent);
         totalAmount += productPrice;
     

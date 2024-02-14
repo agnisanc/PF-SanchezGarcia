@@ -1,0 +1,7 @@
+[
+    {"id": 1 , "name": "Collar de plata Jericó", "material": "Plata", "tipo": "Pura", "price": 75000, "image": "../images/jerico.jpg"},
+    {"id": 2 , "name": "Collar de plata Lisboa", "material": "Plata", "tipo": "925", "price": 45000, "image": "../images/lisboa.jpg"},
+    {"id": 3 , "name": "Collar de plata Luxor", "material": "Plata", "tipo": "950" , "price": 55000, "image": "../images/luxor.jpg"},
+    {"id": 4 , "name": "Anillo de plata Zanzíbar" , "material": "Plata", "tipo": "Pura", "price": 40000, "image": "../images/zanzibar.jpg"},
+    {"id": 5 , "name": "Anillo de plata Praga" ,  "material": "Plata", "tipo": "950" , "price": 35000, "image": "../images/praga.jpg"}
+]

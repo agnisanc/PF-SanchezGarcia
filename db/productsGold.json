@@ -1,0 +1,7 @@
+[
+    {"id": 1 , "name": "Collar de oro Atenas" , "material": "Oro", "tipo": "24K", "price": 90000, "image": "../images/atenas.jpg"},
+    {"id": 2 , "name": "Collar de oro Cartago" , "material": "Oro", "tipo": "18K", "price": 80000, "image": "../images/cartago.jpg"},
+    {"id": 3 , "name": "Collar de oro Tánger" , "material": "Oro", "tipo": "14K", "price": 70000, "image": "../images/tanger.jpg"},
+    {"id": 4 , "name": "Anillo de oro Tenochtitlan" , "material": "Oro", "tipo": "24K", "price": 60000, "image": "../images/tenochtitlan.jpg"},
+    {"id": 5 , "name": "Anillo de oro Tebas" , "material": "Oro", "tipo": "18K", "price": 50000, "image": "../images/tebas.jpg"}
+]

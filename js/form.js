@@ -1,8 +1,6 @@
 
-
 const buyTitle = document.getElementById("buyTitle");
 const titleBuy = document.createElement("h2");
-
 titleBuy.textContent = "TU COMPRA";
 buyTitle.appendChild(titleBuy);
 
@@ -31,16 +29,19 @@ showSavedProducts();
 
 
 const totalAmount = parseFloat(sessionStorage.getItem("totalAmount")) || 0;
-const formTotalAmountDiv = document.getElementById("formTotalAmount");
+const formTotalAmount = document.getElementById("formTotalAmount");
 const totalAmountElement = document.createElement("div");
 totalAmountElement.textContent = `Monto total: $${totalAmount}`;
-formTotalAmountDiv.appendChild(totalAmountElement);
+formTotalAmount.appendChild(totalAmountElement);
 
+//Se crea formulario donde se cargan los datos de la compra
+
+const formInfo = document.getElementById("formInfo");
 const formElement = document.createElement("form");
 
 const fieldTitles = [
-    "Nombre", "Apellido", "Número de DNI", "Número de Tarjeta de Crédito", "CCV",
-    "Provincia", "Localidad", "Dirección", "Altura", "Codigo Postal", "Indicaciones"
+    "Nombre", "Apellido", "Número de telefono", "Número de DNI", "Número de Tarjeta de Crédito", "CCV",
+    "Dirección en Ciudad de Cordoba", "Altura", "Codigo Postal", "Indicaciones"
 ];
 
 fieldTitles.forEach(title => {
@@ -59,9 +60,9 @@ const feesTitle = document.createElement("h3");
 feesTitle.textContent = "Cuotas";
 
 const feesSelect = document.createElement("select");
-feesSelect.setAttribute("name", "cuotas");
+feesSelect.setAttribute("name", "fees");
 
-const feesOptions = ["1", "3", "6", "12", "18"];
+const feesOptions = ["-","1", "3", "6", "12", "18"];
 feesOptions.forEach(option => {
     const feeOption = document.createElement("option");
     feeOption.textContent = option;
@@ -69,56 +70,76 @@ feesOptions.forEach(option => {
     feesSelect.appendChild(feeOption);
 });
 
+formInfo.appendChild(formElement);
 formElement.appendChild(feesTitle);
 formElement.appendChild(feesSelect);
 
+/*Se crean condiciones que deben cumplirse en el formulario en los campos de:
+-Numero de telefono
+-Tarjeta de Credito
+-CCV
+-Codigo Postal
+*/
 
 const submitButton = document.getElementById("submitButton");
+const sendData = document.getElementById("sendData");
 
+submitButton.addEventListener("click", function(e) {
+    e.preventDefault();
 
-submitButton.addEventListener("click", function() {
-    const sendData = document.getElementById("sendData");
+    const phone = formElement.elements["número_de_telefono"].value
+    const card = formElement.elements["número_de_tarjeta_de_crédito"].value;
+    const ccv = formElement.elements["ccv"].value;
+    const postalCode = formElement.elements["codigo_postal"].value;
+
     sendData.innerHTML = "";
 
-    const creditCardInput = document.querySelector('input[name="número_de_tarjeta_de_crédito"]');
-    if (creditCardInput.value.length !== 16) {
-        const message = document.createElement("div");
-        message.textContent = "El número de tarjeta de crédito debe tener exactamente 16 dígitos.";
-        message.classList.add("validation-message");
-        sendData.appendChild(message);
+    if (phone.length !== 10 || isNaN(phone)) {
+        const errorMessage = document.createElement("h3");
+        errorMessage.textContent = "El número de telefono debe tener exactamente 10 digitos.";
+        sendData.appendChild(errorMessage);
+
     }
 
-    const ccvInput = document.querySelector('input[name="ccv"]');
-    if (ccvInput.value.length !== 3) {
-        const message = document.createElement("div");
-        message.textContent = "El CCV debe tener exactamente 3 dígitos.";
-        message.classList.add("validation-message"); 
-        sendData.appendChild(message);
+    if (card.length !== 16 || isNaN(card)) {
+        const errorMessage = document.createElement("h3");
+        errorMessage.textContent = "El número de tarjeta de crédito debe tener exactamente 16 dígitos.";
+        sendData.appendChild(errorMessage);
+
     }
 
-    if (sendData.children.length > 0) {
+    if (ccv.length !== 3 || isNaN(ccv)) {
+        const errorMessage = document.createElement("h3");
+        errorMessage.textContent = "El CCV debe tener exactamente 3 dígitos.";
+        sendData.appendChild(errorMessage);
+
+    }
+
+    if (postalCode.length !== 4 || isNaN(postalCode)) {
+        const errorMessage = document.createElement("h3");
+        errorMessage.textContent = "El código postal debe tener exactamente 4 dígitos.";
+        sendData.appendChild(errorMessage);
         return;
     }
 
-    formElement.submit();
+    const successMessage = document.createElement("h3");
+    successMessage.textContent = "Los datos fueron validados correctamente. Clickea en 'Finalizar Compra!' para que podamos concretar tu transaccion!";
+    sendData.appendChild(successMessage);
 });
 
-const formInfo = document.getElementById("formInfo");
-formInfo.appendChild(formElement);
-
+// Se guardan datos del formulario en el localStorage
 
 const inputs = document.querySelectorAll('input');
 inputs.forEach(input => {
     input.addEventListener('change', function() {
         const name = input.getAttribute('name');
         const value = input.value;
-
         localStorage.setItem(name, value);
     });
 });
 
 feesSelect.addEventListener("change", function() {
-    const selectedFees = cuotasSelect.value;
+    const selectedFees = feesSelect.value;
     localStorage.setItem("selectedFees", selectedFees);
 });
 
@@ -127,3 +148,8 @@ endBuyButton.addEventListener("click", function() {
     window.location.href = "./buyinfo.html";
 });
 
+const returnButton = document.getElementById("return");
+returnButton.addEventListener("click", function() {
+    sessionStorage.clear();
+    window.location.href = "../index.html";
+})
