@@ -14,3 +14,4 @@ En este proyecto se utilizaron los modulos:
 12) Passport-jwt
 13) Passport-local
 14) Morgan
+15) Joi
